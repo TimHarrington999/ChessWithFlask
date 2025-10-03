@@ -1,0 +1,1 @@
+- render a chess board for the route /play
