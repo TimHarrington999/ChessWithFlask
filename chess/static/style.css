@@ -1,0 +1,36 @@
+h1 {
+    text-align: center;
+}
+
+.Chess-Board-Main {
+    white-space: nowrap;
+    margin: 0 auto;
+    width: 800px;
+    height: 800px;
+    border: 2px solid black;
+    font-size: 0;
+}
+
+.Chess-Board-Row {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    height: 12.5%;
+}
+
+.Dark-Sq {
+    display: inline-flex;
+    width: 12.5%;
+    height: 100%;
+    background-color: rgb(146, 77, 45);
+    border: 1px solid black;
+}
+
+.Light-Sq {
+    display: inline-flex;
+    width: 12.5%;
+    height: 100%;
+    background-color: rgb(233, 197, 180);
+    border: 1px solid black;
+}
