@@ -1,1 +1,11 @@
-- render a chess board for the route /play
+This is a tentative list of what I intend to work on next for the project.
+
+Frontend: 
+- add dummy pieces to game to get movement functionality down.
+- find icons for each chess piece and arrange them on the board.
+- create a representation of the board to enable communication with the backend.
+
+Backend:
+- Create game controller that will manage the details of the chess game.
+- refine interface between front/back end.
+- add AI (Minimax) to play against the player.
