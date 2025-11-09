@@ -1,7 +1,13 @@
 from flask import Flask, Blueprint, render_template, jsonify
 import random
 
-bp = Blueprint('main', __name__, template_folder="templates")
+bp = Blueprint(
+    'main', 
+    __name__, 
+    template_folder="templates",
+    static_folder="static",
+    static_url_path="/static"
+)
 #api_bp = Blueprint('move', __name__)
 
 # index welcome page
@@ -24,6 +30,16 @@ def ai_move():
         "random": f"{test_func()}"
     }
     return jsonify(test_data)
+
+# debug route
+@bp.route('/debug/static-info')
+def debug_static_info():
+    from flask import current_app, jsonify
+    return jsonify({
+        "app_static_folder": current_app.static_folder,
+        "blueprint_static_folder": bp.static_folder,
+        "static_url_path": current_app.static_url_path
+    })
 
 
 # test function

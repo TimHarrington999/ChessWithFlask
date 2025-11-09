@@ -1,9 +1,7 @@
 This is a tentative list of what I intend to work on next for the project.
 
 Frontend: 
-- add dummy pieces to game to get movement functionality down.
-- find icons for each chess piece and arrange them on the board.
-- create a representation of the board to enable communication with the backend.
+- figure out issues with chess.js library integration.
 
 Backend:
 - Create game controller that will manage the details of the chess game.
