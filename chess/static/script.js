@@ -1,10 +1,3 @@
-//import { Chess } from '/node_modules/chess.js/';
-//import Chess from chess.min.js
-
-import { Chess } from './libs/chess.js';
-
-/* import * as ChessJS from 'chess.js';
-const Chess = typeof ChessJS === 'function' ? ChessJS : ChessJS.Chess; */
 
 var board = null;
 var game = new Chess();
@@ -14,30 +7,37 @@ var $pgn = $('#pgn');
 
 
 // called whenever a piece is starting to get dragged
-function onDragStart (source, piece, position, orientation) {
+function onDragStart(source, piece, position, orientation) {
     // do not pick up pieces if the game is over
     if (game.game_over()) return false
 
     // player can only move their color of pieces
     if ((orientation === 'white' && piece.search(/^w/) === -1) ||
-            (orientation === 'black' && piece.search(/^b/) === -1)) {
+        (orientation === 'black' && piece.search(/^b/) === -1)) {
         return false
-  }
+    }
 }
 
 // Ensure player can only make legal moves
 // also sends the updated board position to the back-end
-function onDrop (source, target, piece, newPos, oldPos, orientation) {
-    // see if the move is legal
-    var move = game.move({
-        from: source,
-        to: target,
-        promotion: 'q' // Always assume queen for simplicity
-    });
+function onDrop(source, target, piece, newPos, oldPos, orientation) {
 
-    // illegal move
-    if (move === null) return 'snapback';
+    try {
+        // see if the move is legal
+        var move = game.move({
+            from: source,
+            to: target,
+            promotion: 'q' // Always assume queen for simplicity
+        });
 
+        // illegal move
+        if (move === null) return 'snapback';
+    } catch (e) {
+        console.error(e);
+        return 'snapback';
+    }
+
+    // a valid move was made, then update
     updateStatus();
 }
 
@@ -49,6 +49,7 @@ function onSnapEnd() {
 function updateStatus() {
     var status = '';
 
+    // determine which color is taking their turn
     var moveColor = 'White';
     if (game.turn() === 'b') {
         moveColor = 'Black';
@@ -74,9 +75,11 @@ function updateStatus() {
         }
     }
 
-    /* $status.html(status)
+    $status.html(status)
     $fen.html(game.fen())
-    $pgn.html(game.pgn()) */
+    $pgn.html(game.pgn())
+
+    console.log("Status has been updated.");
 }
 
 // configure the board
@@ -93,25 +96,3 @@ var config = {
 board = Chessboard('board', config);
 
 updateStatus();
-
-
-
-
-
-
-
-/* // Enable dragging for player's pieces
-const piece = document.getElementsByClassName("Piece");
-
-// test for getting data from flask
-function testFunction()
-{
-    fetch('/api/move')
-        .then(res => res.json())
-        .then(data => {
-            console.log(data);
-            document.body.innerHTML += `${test_data.random}`;
-        });
-
-     
-} */
