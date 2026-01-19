@@ -1,5 +1,4 @@
-Lib/
 */__pycache__
 node_modules/
-
-pyvenv.cfg
+Scripts/
+venv/
