@@ -22,6 +22,7 @@ function onDragStart(source, piece, position, orientation) {
 // also sends the updated board position to the back-end
 function onDrop(source, target, piece, newPos, oldPos, orientation) {
 
+    // TODO: Change the handling of move validation from the browser to Flask
     try {
         // see if the move is legal
         var move = game.move({
@@ -37,13 +38,36 @@ function onDrop(source, target, piece, newPos, oldPos, orientation) {
         return 'snapback';
     }
 
-    // a valid move was made, then update
+    // a valid move was made, then update the game status
     updateStatus();
+
+    // next we'll hand the move over to flask, and get the engine's move
+    const player_move = source + target;
+
+    fetch("/api/move", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            game_id: 1,
+            move: player_move,
+            fen: game.fen
+        })
+    })
+        .then(res => res.json())
+        .then(data => {
+            board.position(data.fen);
+        });
+
+    return 'snapback';
 }
 
 // update the board position after the piece snap for castling, en passant, pawn promotion
 function onSnapEnd() {
+
     board.position(game.fen());
+
+
+
 }
 
 function updateStatus() {
@@ -80,6 +104,7 @@ function updateStatus() {
     $pgn.html(game.pgn())
 
     console.log("Status has been updated.");
+
 }
 
 // configure the board
