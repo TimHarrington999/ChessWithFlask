@@ -1,9 +1,8 @@
 This is a tentative list of what I intend to work on next for the project.
 
 Frontend: 
-- figure out issues with chess.js library integration.
+- 
 
 Backend:
-- Create game controller that will manage the details of the chess game.
-- refine interface between front/back end.
-- add AI (Minimax) to play against the player.
+- Properly load the position of the chess board given a FEN string, a move sequence, or initial state.
+

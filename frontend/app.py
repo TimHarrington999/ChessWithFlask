@@ -2,77 +2,77 @@ from flask import Flask, Blueprint, request, render_template, jsonify
 import chess
 from engine import UCIEngine
 
-print("My chess file: " + chess.__file__)
 
-import random
-
-# initialize the chess engine
 engine = UCIEngine("engine/engine")
 
 # TODO: Move game list to a database instead of being stored in memory
-games = {}
+the_game = chess.Board()
 
-def get_game(game_id):
-    if game_id not in games:
-        games[game_id] = chess.Board()
-    return games[game_id]
+# def get_game(game_id):
+#     if game_id not in games:
+#         games[game_id] = chess.Board()
+#     return games[game_id]
 
 bp = Blueprint(
-    'main', 
-    __name__, 
+    "main",
+    __name__,
     template_folder="templates",
     static_folder="static",
-    static_url_path="/static"
+    static_url_path="/static",
 )
 
+
 # index welcome page
-@bp.route('/')
+@bp.route("/")
 def index():
-    return render_template('index.html')
-    
+    return render_template("index.html")
+
+
 # page for chess board
-@bp.route('/game')
+@bp.route("/game")
 def play():
-    return render_template('game.html')
+    return render_template("game.html")
 
-# chess engine move api
-@bp.route('/api/move', methods=["POST"])
+
+# When the player makes a move, that move gets sent to this route.
+# This route also takes that move, sends it to the engine, then returns the engine's move.
+# TODO: Right now, only one game is kept per flask instance for easier development
+# Integrate a DB in order to enable simultaneous games
+# Also we need to only trust/implement fen strings from the server to ensure data integrity.
+@bp.route("/api/move", methods=["POST"])
 def move():
-    # fen = request.json["fen"]
-    # move = engine.best_move(fen, depth=6)
-    # return jsonify({"move": move})
-
-    # pull the fields from the JSON
+    # pull the fields from the JSON request
     data = request.json
     move = data["move"]
     game_id = data["game_id"]
-    #fen = data["fen"]
 
-    # TODO: track different games in a DB
     # get the game state
-    #board = get_game(game_id)
-    board = chess.Board()
+    # board = get_game(game_id)
+    # board = chess.Board()
 
-    # update the board with the player move
     player_move = chess.Move.from_uci(move)
-    board.push(player_move)
+    the_game.push(player_move)
 
-    # get the engine move and update the board again
-    engine_move = engine.best_move(board.fen(), 6)
-    board.push(chess.Move.from_uci(engine_move))
+    print(f"(app.py) FEN after PLAYER move: {the_game.fen()}")
 
-    return jsonify({
-        "fen": board.fen(),
-        "engine_move": engine_move
-    })
+    engine_move = engine.best_move(the_game.fen(), 6)
+    the_game.push(chess.Move.from_uci(engine_move))
+    print(type(engine_move))
+
+    print(f"(app.py) FEN after ENGINE move: {the_game.fen()}")
+
+    return jsonify({"fen": the_game.fen(), "engine_move": engine_move})
+
 
 # debug route
-@bp.route('/debug/static-info')
+@bp.route("/debug/static-info")
 def debug_static_info():
     from flask import current_app, jsonify
-    return jsonify({
-        "app_static_folder": current_app.static_folder,
-        "blueprint_static_folder": bp.static_folder,
-        "static_url_path": current_app.static_url_path
-    })
 
+    return jsonify(
+        {
+            "app_static_folder": current_app.static_folder,
+            "blueprint_static_folder": bp.static_folder,
+            "static_url_path": current_app.static_url_path,
+        }
+    )

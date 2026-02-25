@@ -10,7 +10,7 @@ Next, we'll need to install our npm packages, these are already listed in packag
 npm install
 ```
 
-To start server, in the root directory simpy execute the run script with python:
+To start server, in the root directory simply execute the run script with python:
 ```bash 
 python run.py
 ```
