@@ -82,9 +82,9 @@ void handle_go() {
 void handle_quit() { running = false; }
 
 //
-// ##################
-// # Main Functions #
-// ##################
+// ###################
+// # Board Functions #
+// ###################
 //
 
 void board_load_startpos() {
@@ -106,6 +106,8 @@ void board_load_startpos() {
 void board_move_piece(char *move) {}
 
 void board_load_fen(char *fen) {}
+
+void board_print() {}
 
 //
 // ####################
