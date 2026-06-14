@@ -1,14 +1,22 @@
+#pragma once
+
 #include "Board.h"
 
-typedef enum { WHITE = 0, BLACK = 1 } color;
+//typedef enum { WHITE = 0, BLACK = 1 } color;
+enum class color;
 
 class Game {
-private:
-  color m_color;
-  Board board;
 
 public:
+  Game();
+  ~Game();
+
   void load_startpos();
   void move_piece(char *);
-  void board_load_fen(char *);
+  void load_fen(char *);
+
+private:
+  //typedef enum { WHITE = 0, BLACK = 1 } color;
+  color m_color;
+  Board *m_board;
 };
