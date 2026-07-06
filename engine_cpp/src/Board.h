@@ -7,14 +7,13 @@
 #include "pieces/Queen.h"
 #include "pieces/Rook.h"
 
-class Board {
+class Board 
+{
 public:
     Board();
     ~Board();
 
     // initializes the setup state for a fresh round of chess
     void load_startpos();
-
-private:
 
 };

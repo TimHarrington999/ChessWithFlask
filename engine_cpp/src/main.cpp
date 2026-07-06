@@ -22,7 +22,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#define MAX_LINE 1024
+#define MAX_LINE 1024 // TODO: Make better
 
 bool running = true;
 

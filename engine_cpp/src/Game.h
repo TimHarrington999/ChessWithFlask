@@ -5,18 +5,18 @@
 //typedef enum { WHITE = 0, BLACK = 1 } color;
 enum class color;
 
-class Game {
+class Game 
+{
+
+    color m_color;
+    Board *m_board;
 
 public:
-  Game();
-  ~Game();
+    Game();
+    ~Game();
 
-  void load_startpos();
-  void move_piece(char *);
-  void load_fen(char *);
+    void load_startpos();
+    void move_piece(char *);
+    void load_fen(char *);
 
-private:
-  //typedef enum { WHITE = 0, BLACK = 1 } color;
-  color m_color;
-  Board *m_board;
 };
