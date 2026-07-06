@@ -81,7 +81,7 @@ void handle_position() {
 // This is where the magic happens. Here is where we analyze possible moves to a
 // given depth, and then return the best move to the front-end.
 void handle_go() {
-  // TODO:
+  // TODO: implement
   printf("bestmove b8c6\n");
   fflush(stdout);
 }

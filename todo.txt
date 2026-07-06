@@ -1,8 +1,0 @@
-This is a tentative list of what I intend to work on next for the project.
-
-Frontend: 
-- 
-
-Backend:
-- Properly load the position of the chess board given a FEN string, a move sequence, or initial state.
-
