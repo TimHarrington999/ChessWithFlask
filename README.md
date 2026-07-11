@@ -10,6 +10,12 @@ Next, we'll need to install our npm packages, these are already listed in packag
 npm install
 ```
 
+We'll also need to build the engine executable in order for Flask to utilize it. Navigate to the engine_cpp directory and run the following:
+```bash
+cmake -S . -B build
+cmake --build build
+```
+
 To start server, in the root directory simply execute the run script with python:
 ```bash 
 python run.py

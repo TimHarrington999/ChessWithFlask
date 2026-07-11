@@ -1,5 +1,4 @@
 #include "Game.h"
-#include "Board.h"
 
 enum class color
 {
@@ -16,5 +15,6 @@ Game::Game()
 
 Game::~Game()
 {
-    delete m_board;
+    // TODO: Figure out why my build config doesn't like this
+    //delete m_board;
 }

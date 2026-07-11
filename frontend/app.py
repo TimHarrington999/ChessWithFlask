@@ -5,9 +5,17 @@ from engine import UCIEngine
 
 # This path defines where the executable for the engine implementation is
 # The c engine is engine_c/engine
-# The c++ engine is engine_cpp/build/engine
+# The c++ engine is engine_cpp/build/ChessEngine
 # engine = UCIEngine("engine_c/engine")
-engine = UCIEngine("engine_cpp/build/engine")
+
+#engine_path = "engine_c/engine"
+engine_path = "engine_cpp/build/ChessEngine"
+
+engine = UCIEngine(engine_path)
+
+print(f"Current engine: {engine_path}\n")
+
+
 
 # TODO: Move game list to a database instead of being stored in memory
 the_game = chess.Board()
