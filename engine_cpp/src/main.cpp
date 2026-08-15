@@ -68,7 +68,7 @@ void handle_position() {
             while (fgets(move, sizeof(move), stdin)) {
                 move[strcspn(move, "\n")] = 0;
 
-                theGame->loadFromMoveString(move);
+                theGame->applySingleMove(move);
             }
         } else if (strcmp(word, "fen") == 0) {
             char fen[MAX_LINE];
@@ -104,10 +104,10 @@ int main() {
     while (running && fgets(line, sizeof(line), stdin)) {
         line[strcspn(line, "\n")] = 0;
         
-        if (strcmp(line, "uci") == 0) {
+        if (strncmp(line, "uci", 3) == 0) {
             handle_uci();
           
-        } else if (strcmp(line, "isready") == 0) {
+        } else if (strncmp(line, "isready", 7) == 0) {
             handle_isready();
           
         } else if (strncmp(line, "position", 8) == 0) {
@@ -116,7 +116,7 @@ int main() {
         } else if (strncmp(line, "go", 2) == 0) {
             handle_go();
           
-        } else if (strcmp(line, "quit") == 0) {
+        } else if (strncmp(line, "quit", 4) == 0) {
             handle_quit();
         }
     }

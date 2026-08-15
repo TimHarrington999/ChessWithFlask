@@ -1,6 +1,6 @@
 # include "PieceBase.h"
 
-char *PieceBase::Move(char *move)
+std::string PieceBase::Move(char *move)
 {
     return nullptr;
 }

@@ -2,10 +2,11 @@
 
 #include <stdlib.h>
 #include <cstring>
+#include <string>
 
 class PieceBase
 {
-    static char* Move(char *);
+    std::string Move(char *);
 
 public:
     PieceBase();

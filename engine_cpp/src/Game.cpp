@@ -1,16 +1,10 @@
 #include "Game.h"
 
-enum class color
-{
-    WHITE,
-    BLACK
-};
-
 Game::Game()
 {
     m_board = new Board();
 
-    m_board->load_startpos();
+    m_board->loadDefaultStartPos();
 }
 
 Game::~Game()
@@ -22,17 +16,17 @@ Game::~Game()
 /* initial board postion functions */
 void Game::loadFromStartPos()
 {
-
-}
-
-void Game::loadFromMoveString(char *moveStr)
-{
-
+    m_board->loadDefaultStartPos();
 }
 
 void Game::loadFromFen(char *fenStr)
 {
 
+}
+
+void Game::applySingleMove(char *moveStr)
+{
+    
 }
 
 /* evaluate board position and determine next move */

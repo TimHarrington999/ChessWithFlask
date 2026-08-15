@@ -2,10 +2,16 @@
 
 Board::Board()
 {
+    // don't want to load any postion yet, for now just initialize our pieces
 
 }
 
-void Board::load_startpos()
+void Board::loadDefaultStartPos()
+{
+
+}
+
+void Board::movePieceFromStr(std::string moveStr)
 {
 
 }
