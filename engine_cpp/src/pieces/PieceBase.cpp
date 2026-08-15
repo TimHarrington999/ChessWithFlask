@@ -2,5 +2,5 @@
 
 char *PieceBase::Move(char *move)
 {
-    
+    return nullptr;
 }

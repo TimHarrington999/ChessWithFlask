@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Board.h"
+#include <string>
 
 //typedef enum { WHITE = 0, BLACK = 1 } color;
 enum class color;
@@ -15,8 +16,11 @@ public:
     Game();
     ~Game();
 
-    void load_startpos();
-    void move_piece(char *);
-    void load_fen(char *);
+    /* inital board position functions */
+    void loadFromStartPos();
+    void loadFromMoveString(char *);
+    void loadFromFen(char *);
 
+    /* evaluate board position and determine a next move */
+    std::string getNextMove();
 };

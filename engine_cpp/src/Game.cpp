@@ -15,6 +15,32 @@ Game::Game()
 
 Game::~Game()
 {
-    // TODO: Figure out why my build config doesn't like this
-    //delete m_board;
+    delete m_board;
+    m_board = nullptr;
+}
+
+/* initial board postion functions */
+void Game::loadFromStartPos()
+{
+
+}
+
+void Game::loadFromMoveString(char *moveStr)
+{
+
+}
+
+void Game::loadFromFen(char *fenStr)
+{
+
+}
+
+/* evaluate board position and determine next move */
+std::string Game::getNextMove()
+{
+    std::string moveStr;
+    
+
+
+    return "b2b4";
 }
