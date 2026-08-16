@@ -2,11 +2,10 @@
 
 #include "PieceBase.h"
 
-class Queen : PieceBase
+class Queen : public PieceBase
 {
 
 
 public:
-    Queen();
-    ~Queen();
+    Queen(TurnColor color);
 };

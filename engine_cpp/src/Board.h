@@ -4,8 +4,12 @@
 #include "pieces/King.h"
 #include "pieces/Knight.h"
 #include "pieces/Pawn.h"
+#include "pieces/PieceBase.h"
 #include "pieces/Queen.h"
 #include "pieces/Rook.h"
+
+#include <array>
+#include <memory>
 
 class Board 
 {
@@ -25,9 +29,9 @@ class Board
     //
     //      a  b  c  d  e  f  g  h
     //
-    PieceBase m_board[64];
+    std::array<std::unique_ptr<PieceBase>, 64> m_board{};
 
-    
+
 
 public:
     Board();
@@ -38,6 +42,6 @@ public:
 
     /* single move functions */
 
-    // takes a standard move string, ie b2b4 and applies it
+    // takes a UCI move string, such as 'b2b4' and applies it
     void movePieceFromStr(std::string moveStr);
 };

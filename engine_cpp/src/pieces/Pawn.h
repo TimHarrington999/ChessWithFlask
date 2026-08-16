@@ -2,11 +2,10 @@
 
 #include "PieceBase.h"
 
-class Pawn : PieceBase
+class Pawn : public PieceBase
 {
 
     
 public:
-    Pawn();
-    ~Pawn();
+    Pawn(TurnColor color);
 };

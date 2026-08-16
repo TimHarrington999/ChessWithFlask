@@ -1,18 +1,15 @@
 #pragma once
 
 #include "Board.h"
+#include "enums.h"
+
 #include <string>
 
-enum class turnColor
-{
-    WHITE,
-    BLACK
-};
 
 class Game 
 {
 
-    turnColor m_turnColor;
+    TurnColor m_turnColor;
     Board *m_board;
 
 public:

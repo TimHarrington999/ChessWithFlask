@@ -2,11 +2,10 @@
 
 #include "PieceBase.h"
 
-class Rook : PieceBase
+class Rook : public PieceBase
 {
 
 
 public:
-    Rook();
-    ~Rook();
+    Rook(TurnColor color);
 };

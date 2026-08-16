@@ -2,11 +2,10 @@
 
 #include "PieceBase.h"
 
-class Bishop : PieceBase
+class Bishop : public PieceBase
 {
 
 
 public:
-    Bishop();
-    ~Bishop();
+    Bishop(TurnColor color);
 };

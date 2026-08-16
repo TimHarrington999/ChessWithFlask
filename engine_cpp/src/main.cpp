@@ -24,6 +24,9 @@
 
 #define MAX_LINE 1024 // TODO: Make better
 
+// debug flag. for running the engine directly in the terminal for testing
+bool is_debug = false;
+
 bool running = true;
 
 Game *theGame = new Game(); // TODO: Make not global loool
@@ -89,18 +92,39 @@ void handle_go() {
     fflush(stdout);
 }
 
-void handle_quit() { running = false; }
+void handle_quit()
+{
+    running = false;
+}
 
+//
+// ###################
+// # Debug Functions #
+// ###################
+//
+
+void handle_print()
+{
+    printf("This is a test\n");
+}
 
 // ######################
 // # Engine Entry Point #
 // ######################
 
 
-int main() {
+int main(int argc, char* argv[]) {
+
+    if (argc == 2)
+    {
+        if (strcmp(argv[1], "-debug") == 0)
+        {
+            is_debug = true;
+            printf("Running in debug mode!\n");
+        }
+    }
 
     char line[MAX_LINE];
-
     while (running && fgets(line, sizeof(line), stdin)) {
         line[strcspn(line, "\n")] = 0;
         
@@ -118,6 +142,11 @@ int main() {
           
         } else if (strncmp(line, "quit", 4) == 0) {
             handle_quit();
+        }
+
+        // ----- Non UCI functionality, for debug purposes -----
+        else if(is_debug && strncmp(line, "print", 5) == 0) {
+            handle_print();
         }
     }
 
