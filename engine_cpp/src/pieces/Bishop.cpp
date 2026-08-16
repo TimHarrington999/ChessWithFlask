@@ -1,7 +1,7 @@
 #include "Bishop.h"
 
-Bishop::Bishop(TurnColor color) :
+Bishop::Bishop(Color color) :
     PieceBase(color)
 {
-
+    m_chars += "b";
 }

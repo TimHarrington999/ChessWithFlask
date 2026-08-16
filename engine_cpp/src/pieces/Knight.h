@@ -7,5 +7,5 @@ class Knight : public PieceBase
 
 
 public:
-    Knight(TurnColor color);
+    Knight(Color color);
 };

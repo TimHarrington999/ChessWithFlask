@@ -7,5 +7,5 @@ class Bishop : public PieceBase
 
 
 public:
-    Bishop(TurnColor color);
+    Bishop(Color color);
 };

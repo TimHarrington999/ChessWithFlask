@@ -7,5 +7,5 @@ class Rook : public PieceBase
 
 
 public:
-    Rook(TurnColor color);
+    Rook(Color color);
 };

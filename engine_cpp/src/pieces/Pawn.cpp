@@ -1,7 +1,7 @@
 #include "Pawn.h"
 
-Pawn::Pawn(TurnColor color) :
+Pawn::Pawn(Color color) :
     PieceBase(color)
 {
-
+    m_chars += "p";
 }

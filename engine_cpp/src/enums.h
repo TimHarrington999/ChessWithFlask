@@ -1,7 +1,7 @@
 #pragma once
 
 #include <cstddef>
-enum class TurnColor
+enum class Color
 {
     WHITE,
     BLACK

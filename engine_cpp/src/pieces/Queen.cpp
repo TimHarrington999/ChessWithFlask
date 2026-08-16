@@ -1,7 +1,7 @@
 #include "Queen.h"
 
-Queen::Queen(TurnColor color) :
+Queen::Queen(Color color) :
     PieceBase(color)
 {
-
+    m_chars += "q";
 }

@@ -24,10 +24,20 @@ Board::Board()
     // ----- Black Pieces -----
 
     // pawns
-    auto it = m_board.begin() + idx(Square::A7);
-    for (; it != m_board.begin() + idx(Square::A8); ++it)
+    auto bIt = m_board.begin() + idx(Square::A7);
+    for (; bIt != m_board.begin() + idx(Square::A8); ++bIt)
     {
-        *it = std::make_unique<Pawn>(TurnColor::BLACK);
+        *bIt = std::make_unique<Pawn>(Color::BLACK);
+    }
+
+
+    // ----- White Pieces -----
+    
+    // pawns
+    auto wIt = m_board.begin() + idx(Square::A2);
+    for (; wIt != m_board.begin() + idx(Square::A3); ++wIt)
+    {
+        *wIt = std::make_unique<Pawn>(Color::WHITE);
     }
 
 }
@@ -40,4 +50,27 @@ void Board::loadDefaultStartPos()
 void Board::movePieceFromStr(std::string moveStr)
 {
 
+}
+
+//
+// ----- Debug Functions -----
+//
+
+void Board::print()
+{
+    for (int i = 56; i >= 0; i -= 8)
+    {
+        for (int j = 0; j < 8; j++)
+        {
+            if (m_board[i+j] == nullptr)
+            {
+                printf(" __");
+            }
+            else
+            {
+                printf(" %s", m_board[i+j]->getChars().c_str());
+            }
+        }
+        printf("\n");
+    }
 }

@@ -9,7 +9,7 @@
 class Game 
 {
 
-    TurnColor m_turnColor;
+    Color m_turnColor;
     Board *m_board;
 
 public:
@@ -23,4 +23,7 @@ public:
 
     /* evaluate board position and determine a next move */
     std::string getNextMove();
+
+    /* Debug functions */
+    void printBoard();
 };

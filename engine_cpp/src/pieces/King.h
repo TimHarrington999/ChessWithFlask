@@ -7,5 +7,5 @@ class King : public PieceBase
 
 
 public:
-    King(TurnColor color);
+    King(Color color);
 };

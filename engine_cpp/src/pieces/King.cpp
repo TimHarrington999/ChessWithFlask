@@ -1,7 +1,7 @@
 #include "King.h"
 
-King::King(TurnColor color) :
+King::King(Color color) :
     PieceBase(color)
 {
-
+    m_chars += "k";
 }

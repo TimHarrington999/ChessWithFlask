@@ -7,5 +7,5 @@ class Queen : public PieceBase
 
 
 public:
-    Queen(TurnColor color);
+    Queen(Color color);
 };

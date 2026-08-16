@@ -1,7 +1,7 @@
 #include "Knight.h"
 
-Knight::Knight(TurnColor color) :
+Knight::Knight(Color color) :
     PieceBase(color)
 {
-
+    m_chars += "n";
 }

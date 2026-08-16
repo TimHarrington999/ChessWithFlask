@@ -8,14 +8,16 @@
 
 class PieceBase
 {
-    TurnColor m_color;
-
+    Color m_color;
 
     std::string Move(char *);
 
+protected:
+    std::string m_chars; // for debug printing in the terminal
+
 public:
-    PieceBase(TurnColor color);
+    PieceBase(Color color);
     virtual ~PieceBase() = default;
 
-
+    std::string getChars(); // for debug printing in the terminal
 };

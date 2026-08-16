@@ -105,7 +105,7 @@ void handle_quit()
 
 void handle_print()
 {
-    printf("This is a test\n");
+    theGame->printBoard();
 }
 
 // ######################

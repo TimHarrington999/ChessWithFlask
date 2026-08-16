@@ -44,4 +44,7 @@ public:
 
     // takes a UCI move string, such as 'b2b4' and applies it
     void movePieceFromStr(std::string moveStr);
+
+    /* Debug Functions */
+    void print();
 };

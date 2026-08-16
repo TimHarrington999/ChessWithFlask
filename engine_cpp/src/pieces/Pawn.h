@@ -7,5 +7,5 @@ class Pawn : public PieceBase
 
     
 public:
-    Pawn(TurnColor color);
+    Pawn(Color color);
 };
