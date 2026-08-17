@@ -1,6 +1,9 @@
 #pragma once
 
 #include <cstddef>
+#include <string>
+
+
 enum class Color
 {
     WHITE,

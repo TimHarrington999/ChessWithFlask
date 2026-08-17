@@ -55,7 +55,11 @@ void handle_isready() {
 // 2. (start position and a move sequence) - 'startpos moves e2e4 e7e5'
 // 3. (FEN string) - 'fen <FEN>'
 void handle_position() {
-    return;
+
+    //std::string input;
+    //std::getLine(std::cin, input);
+
+
 
     char word[9];
 
@@ -150,5 +154,6 @@ int main(int argc, char* argv[]) {
         }
     }
 
+    delete theGame;
     return 0;
 }

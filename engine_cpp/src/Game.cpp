@@ -3,8 +3,6 @@
 Game::Game()
 {
     m_board = new Board();
-
-    m_board->loadDefaultStartPos();
 }
 
 Game::~Game()
@@ -28,7 +26,8 @@ void Game::loadFromFen(char *fenStr)
 
 void Game::applySingleMove(char *moveStr)
 {
-    
+    std::string str = moveStr;
+    m_board->movePieceFromStr(str);
 }
 
 //
