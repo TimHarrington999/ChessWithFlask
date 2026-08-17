@@ -19,7 +19,7 @@ public:
     /* inital board position functions */
     void loadFromStartPos();
     void loadFromFen(char *);
-    void applySingleMove(char *);
+    void applySingleMove(std::string);
 
     /* evaluate board position and determine a next move */
     std::string getNextMove();

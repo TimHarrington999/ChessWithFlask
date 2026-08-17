@@ -18,9 +18,11 @@
 #include "main.h"
 #include "Game.h"
 
-#include <cstring>
+#include <string>
 #include <stdlib.h>
 #include <stdio.h>
+#include <iostream>
+#include <sstream>
 
 #define MAX_LINE 1024 // TODO: Make better
 
@@ -32,85 +34,13 @@ bool running = true;
 Game *theGame = new Game(); // TODO: Make not global loool
 
 
-//
-// #################
-// # UCI Functions #
-// #################
-//
-
-void handle_uci() {
-    printf("id name TimothyChessEngine\n");
-    printf("id author TimothyHarrington\n");
-    printf("uciok\n");
-    fflush(stdout);
-}
-
-void handle_isready() {
-    printf("readyok\n");
-    fflush(stdout);
-}
-
 // There are three possibilities when handling position
 // 1. (Just the start position) - 'startpos'
 // 2. (start position and a move sequence) - 'startpos moves e2e4 e7e5'
 // 3. (FEN string) - 'fen <FEN>'
-void handle_position() {
-
-    //std::string input;
-    //std::getLine(std::cin, input);
 
 
 
-    char word[9];
-
-    while (fgets(word, sizeof(word), stdin)) {
-        word[strcspn(word, "\n")] = 0;
-
-        if (strcmp(word, "startpos") == 0) {
-            theGame->loadFromStartPos();
-
-        } else if (strcmp(word, "moves") == 0) {
-            char move[5];
-
-            while (fgets(move, sizeof(move), stdin)) {
-                move[strcspn(move, "\n")] = 0;
-
-                theGame->applySingleMove(move);
-            }
-        } else if (strcmp(word, "fen") == 0) {
-            char fen[MAX_LINE];
-
-            theGame->loadFromFen(fen);
-        }
-    }
-}
-
-// evaluate the board and come up with a move to send back to flask
-void handle_go() {
-    // TODO: implement
-    std::string moveStr = theGame->getNextMove();
-    
-    printf("bestmove %s\n", moveStr.c_str());
-
-    //printf("bestmove b8c6\n");
-    fflush(stdout);
-}
-
-void handle_quit()
-{
-    running = false;
-}
-
-//
-// ###################
-// # Debug Functions #
-// ###################
-//
-
-void handle_print()
-{
-    theGame->printBoard();
-}
 
 // ######################
 // # Engine Entry Point #
@@ -128,29 +58,69 @@ int main(int argc, char* argv[]) {
         }
     }
 
-    char line[MAX_LINE];
-    while (running && fgets(line, sizeof(line), stdin)) {
-        line[strcspn(line, "\n")] = 0;
-        
-        if (strncmp(line, "uci", 3) == 0) {
-            handle_uci();
-          
-        } else if (strncmp(line, "isready", 7) == 0) {
-            handle_isready();
-          
-        } else if (strncmp(line, "position", 8) == 0) {
-            handle_position();
-          
-        } else if (strncmp(line, "go", 2) == 0) {
-            handle_go();
-          
-        } else if (strncmp(line, "quit", 4) == 0) {
-            handle_quit();
+    std::string line;
+
+    while (running && std::getline(std::cin, line))
+    {
+        std::istringstream input(line);
+
+        std::string word;
+        input >> word;
+
+        if (word == "uci")
+        {
+            printf("id name TimothyChessEngine\n");
+            printf("id author TimothyHarrington\n");
+            printf("uciok\n");
+            fflush(stdout);
+        }
+        else if (word == "isready")
+        {
+            printf("readyok\n");
+            fflush(stdout);
+        }
+        else if (word == "position")
+        {
+            input >> word;
+            if (word == "fen")
+            {
+                //theGame->loadFromFen();
+                continue;
+            }
+            else if (word == "startpos")
+            {
+                theGame->loadFromStartPos();
+                input >> word;
+            }
+            
+            if (word == "moves")
+            {
+                while (input >> word)
+                {
+                    // grab and apply next move until there are no more
+                    theGame->applySingleMove(word);
+                }
+            }
+        }
+        else if (word == "go")
+        {
+            // TODO: implement
+            std::string moveStr = theGame->getNextMove();
+
+            printf("bestmove %s\n", moveStr.c_str());
+
+            //printf("bestmove b8c6\n");
+            fflush(stdout);
+        }
+        else if (word == "quit")
+        {
+            running = false;
         }
 
         // ----- Non UCI functionality, for debug purposes -----
-        else if(is_debug && strncmp(line, "print", 5) == 0) {
-            handle_print();
+        else if (is_debug && word == "print")
+        {
+            theGame->printBoard();
         }
     }
 

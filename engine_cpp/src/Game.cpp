@@ -24,10 +24,9 @@ void Game::loadFromFen(char *fenStr)
 
 }
 
-void Game::applySingleMove(char *moveStr)
+void Game::applySingleMove(std::string moveStr)
 {
-    std::string str = moveStr;
-    m_board->movePieceFromStr(str);
+    m_board->movePieceFromStr(moveStr);
 }
 
 //

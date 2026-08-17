@@ -4,9 +4,4 @@
 
 #include "Game.h"
 
-
-/* UCI Functions */
-void handle_uci();
-void handle_isready();
-void handle_position();
-void handle_quit();
+int main(int argc, char* argv[]);
