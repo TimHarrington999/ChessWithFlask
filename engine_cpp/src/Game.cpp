@@ -21,7 +21,7 @@ void Game::loadFromStartPos()
 
 void Game::loadFromFen(char *fenStr)
 {
-
+    // TODO: Implement this
 }
 
 void Game::applySingleMove(std::string moveStr)

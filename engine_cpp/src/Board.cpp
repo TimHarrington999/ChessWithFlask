@@ -93,6 +93,7 @@ void Board::movePieceFromStr(std::string moveStr)
     else
     {
         // Maybe Todo?
+        // This would mean that flask sent an invalid move string for setup
     }
 
 }

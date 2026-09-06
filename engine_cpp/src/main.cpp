@@ -60,6 +60,7 @@ int main(int argc, char* argv[]) {
 
     std::string line;
 
+    // TODO: Add better error handling, logic is pretty fragile as-is
     while (running && std::getline(std::cin, line))
     {
         std::istringstream input(line);
@@ -81,7 +82,7 @@ int main(int argc, char* argv[]) {
         }
         else if (word == "position")
         {
-            input >> word;
+            input >> word; // grab next word in line
             if (word == "fen")
             {
                 //theGame->loadFromFen();
@@ -90,7 +91,7 @@ int main(int argc, char* argv[]) {
             else if (word == "startpos")
             {
                 theGame->loadFromStartPos();
-                input >> word;
+                input >> word; // word 'moves' may come next
             }
             
             if (word == "moves")
