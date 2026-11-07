@@ -13,11 +13,12 @@ class PieceBase
     std::string Move(char *);
 
 protected:
-    std::string m_chars; // for debug printing in the terminal
+    // TODO: Name this something better
+    std::string m_ColorChar; // for debug printing in the terminal
 
 public:
     PieceBase(Color color);
     virtual ~PieceBase() = default;
 
-    std::string getChars(); // for debug printing in the terminal
+    std::string getColorChar(); // for debug printing in the terminal
 };

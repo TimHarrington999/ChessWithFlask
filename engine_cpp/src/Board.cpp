@@ -6,6 +6,7 @@
 
 
 Board::Board()
+    : m_Turn(Color::BLACK) // default player color is white
 {
 }
 
@@ -128,7 +129,7 @@ void Board::print()
             }
             else
             {
-                printf(" %s", m_board[i+j]->getChars().c_str());
+                printf(" %s", m_board[i+j]->getColorChar().c_str());
             }
         }
         printf("\n");

@@ -3,5 +3,5 @@
 King::King(Color color) :
     PieceBase(color)
 {
-    m_chars += "k";
+    m_ColorChar += "k";
 }

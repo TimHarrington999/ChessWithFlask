@@ -3,5 +3,5 @@
 Bishop::Bishop(Color color) :
     PieceBase(color)
 {
-    m_chars += "b";
+    m_ColorChar += "b";
 }

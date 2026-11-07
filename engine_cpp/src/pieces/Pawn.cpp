@@ -3,5 +3,5 @@
 Pawn::Pawn(Color color) :
     PieceBase(color)
 {
-    m_chars += "p";
+    m_ColorChar += "p";
 }

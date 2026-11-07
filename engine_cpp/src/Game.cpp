@@ -2,13 +2,7 @@
 
 Game::Game()
 {
-    m_board = new Board();
-}
-
-Game::~Game()
-{
-    delete m_board;
-    m_board = nullptr;
+    m_board = std::make_unique<Board>();
 }
 
 //
@@ -34,11 +28,10 @@ void Game::applySingleMove(std::string moveStr)
 //
 std::string Game::getNextMove()
 {
-    std::string moveStr;
-    
+    std::string moveStr = "";
 
 
-    return "b2b4";
+    return "b7b5";
 }
 
 //

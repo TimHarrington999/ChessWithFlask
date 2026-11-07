@@ -16,6 +16,7 @@
 class Board 
 {
     std::array<std::unique_ptr<PieceBase>, 64> m_board{};
+    Color m_Turn;
 
     /* helpers */
     Square StrToSquare(std::string str);

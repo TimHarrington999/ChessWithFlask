@@ -3,5 +3,5 @@
 Knight::Knight(Color color) :
     PieceBase(color)
 {
-    m_chars += "n";
+    m_ColorChar += "n";
 }

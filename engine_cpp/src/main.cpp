@@ -18,6 +18,7 @@
 #include "main.h"
 #include "Game.h"
 
+#include <memory>
 #include <string>
 #include <stdlib.h>
 #include <stdio.h>
@@ -27,12 +28,13 @@
 #define MAX_LINE 1024 // TODO: Make better
 
 // debug flag. for running the engine directly in the terminal for testing
+// set by user adding -debug to command
 bool is_debug = false;
 
 bool running = true;
 
-Game *theGame = new Game(); // TODO: Make not global loool
-
+// TODO: Make not global or something
+std::unique_ptr<Game> theGame = std::make_unique<Game>();
 
 // There are three possibilities when handling position
 // 1. (Just the start position) - 'startpos'
@@ -105,12 +107,9 @@ int main(int argc, char* argv[]) {
         }
         else if (word == "go")
         {
-            // TODO: implement
             std::string moveStr = theGame->getNextMove();
 
             printf("bestmove %s\n", moveStr.c_str());
-
-            //printf("bestmove b8c6\n");
             fflush(stdout);
         }
         else if (word == "quit")
@@ -125,6 +124,5 @@ int main(int argc, char* argv[]) {
         }
     }
 
-    delete theGame;
     return 0;
 }

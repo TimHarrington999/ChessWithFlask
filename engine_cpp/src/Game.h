@@ -8,13 +8,11 @@
 
 class Game 
 {
-
     Color m_turnColor;
-    Board *m_board;
+    std::unique_ptr<Board> m_board;
 
 public:
     Game();
-    ~Game();
 
     /* inital board position functions */
     void loadFromStartPos();

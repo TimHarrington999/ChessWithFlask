@@ -6,11 +6,11 @@ PieceBase::PieceBase(Color color) :
 {
     if (color == Color::WHITE)
     {
-        m_chars = "w";
+        m_ColorChar = "w";
     }
     else
     {
-        m_chars = "b";
+        m_ColorChar = "b";
     }
 }
 
@@ -23,7 +23,7 @@ std::string PieceBase::Move(char *move)
 // ----- Debug Functions -----
 //
 
-std::string PieceBase::getChars()
+std::string PieceBase::getColorChar()
 {
-    return m_chars;
+    return m_ColorChar;
 }
