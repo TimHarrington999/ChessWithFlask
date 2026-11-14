@@ -4,7 +4,7 @@
 // This engine uses UCI (Universal Chess Interface) to communicate with the
 // front-end.
 //
-
+// 
 //
 // ## Overview ##
 // This connects with Flask through the python class UCIEngine via pipe.
@@ -87,6 +87,7 @@ int main(int argc, char* argv[]) {
             input >> word; // grab next word in line
             if (word == "fen")
             {
+                // TODO: Implement this guy
                 //theGame->loadFromFen();
                 continue;
             }

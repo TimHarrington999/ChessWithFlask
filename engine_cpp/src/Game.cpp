@@ -29,9 +29,10 @@ void Game::applySingleMove(std::string moveStr)
 std::string Game::getNextMove()
 {
     std::string moveStr = "";
+    
+    moveStr = "d7d5";
 
-
-    return "b7b5";
+    return moveStr;
 }
 
 //
